@@ -2,12 +2,13 @@
 Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.7.92
+Version:	0.8.1
 Release:	1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/%{pname}/%{pname}-%{version}.tar.gz
-# Source0-md5:	c4bcec0671d3a67e73d3d77b51bd5296
+# Source0-md5:	4666978d610b48f7f7481e41433a856c
+Patch0:		%{pname}-py2pyc.patch
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= 0.8.0
 BuildRequires:	gstreamer-plugins-devel >= 0.8.0
@@ -27,8 +28,13 @@ Wi±zania jêzyka Python do GStreamera.
 
 %prep
 %setup -q -n %{pname}-%{version}
+%patch0 -p1
 
 %build
+%{__aclocal} -I common/m4/
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--enable-docs
 
@@ -51,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %dir %{py_sitedir}/gst
 %attr(755,root,root) %{py_sitedir}/gst/*.so
-%{py_sitedir}/gst/*.py[co]
+%{py_sitescriptdir}/gst/*py[co]
 %{_pkgconfigdir}/*.pc
 %{_datadir}/%{pname}
 %{_examplesdir}/*
