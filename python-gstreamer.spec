@@ -1,4 +1,4 @@
-%define	pname	gst-python
+%define		pname	gst-python
 Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
