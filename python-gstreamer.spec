@@ -48,6 +48,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+echo "gst" > $RPM_BUILD_ROOT%{py_sitedir}/gst.pth
+
 cp -R examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
@@ -58,6 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %dir %{py_sitedir}/gst
 %attr(755,root,root) %{py_sitedir}/gst/*.so
+%{py_sitedir}/*.pth
 %{py_sitescriptdir}/gst/*py[co]
 %{_pkgconfigdir}/*.pc
 %{_datadir}/%{pname}
