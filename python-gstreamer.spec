@@ -3,12 +3,13 @@ Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
 Version:	0.8.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/%{pname}/%{pname}-%{version}.tar.gz
 # Source0-md5:	35a735711f43551722b0dbcfc7895f3e
 Patch0:		%{pname}-py2pyc.patch
+Patch1:		%{pname}-sitedir.patch
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	gstreamer-devel >= 0.8.0
 BuildRequires:	gstreamer-plugins-devel >= 0.8.0
@@ -30,6 +31,7 @@ Wi±zania jêzyka Python do GStreamera.
 %prep
 %setup -q -n %{pname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal} -I common/m4/
@@ -48,7 +50,7 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-echo "gst" > $RPM_BUILD_ROOT%{py_sitedir}/gst.pth
+%py_postclean
 
 cp -R examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -60,8 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %dir %{py_sitedir}/gst
 %attr(755,root,root) %{py_sitedir}/gst/*.so
-%{py_sitedir}/*.pth
-%{py_sitescriptdir}/gst/*py[co]
+%{py_sitedir}/gst/*py[co]
 %{_pkgconfigdir}/*.pc
 %{_datadir}/%{pname}
 %{_examplesdir}/*
