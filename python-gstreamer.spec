@@ -11,6 +11,8 @@ Source0:	http://gstreamer.freedesktop.org/src/%{pname}/%{pname}-%{version}.tar.g
 Patch0:		%{pname}-py2pyc.patch
 Patch1:		%{pname}-sitedir.patch
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gstreamer-devel >= 0.8.0
 BuildRequires:	gstreamer-plugins-devel >= 0.8.0
 BuildRequires:	gtk+2-devel
