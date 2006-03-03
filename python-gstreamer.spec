@@ -3,7 +3,7 @@ Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
 Version:	0.10.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
@@ -52,6 +52,9 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py_comp $RPM_BUILD_ROOT%{py_sitedir}
+%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
+
 %py_postclean
 
 cp -R examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -70,6 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/gst-*/gst/extend
 %{py_sitedir}/gst-*/gst/extend/*.py[co]
 %{py_sitedir}/pygst.pth
+%{py_sitedir}/pygst.py[co]
 %{_datadir}/gst-python
 %{_pkgconfigdir}/gst-python-*.pc
 %{_examplesdir}/%{name}-%{version}
