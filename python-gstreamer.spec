@@ -17,7 +17,7 @@ BuildRequires:	gstreamer-devel >= 0.10.2
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0.2
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	libtool >= 1.4
-BuildRequires:	pkgconfig >= 0.9.0
+BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python-pygtk-devel >= 2.6.3
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
