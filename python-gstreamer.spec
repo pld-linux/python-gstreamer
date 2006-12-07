@@ -2,13 +2,12 @@
 Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.5
-Release:	2
+Version:	0.10.6
+Release:	1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	f5e614356e581c644bb4c79c1de7ed7e
-Patch0:		%{pname}-py2pyc.patch
+# Source0-md5:	dc9804aa67bc71aa9b6185726b6694ba
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -18,13 +17,13 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0.2
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	libtool >= 1.4
 BuildRequires:	pkgconfig >= 1:0.9.0
-BuildRequires:	python-pygtk-devel >= 2.6.3
+BuildRequires:	python-pygobject-devel >= 2.11.2
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
 Requires:	glib2 >= 1:2.8.0
 Requires:	gstreamer >= 0.10.2
 Requires:	gstreamer-plugins-base >= 0.10.0.2
-Requires:	python-pygtk-gtk >= 2.6.3
+Requires:	python-pygobject >= 2.11.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,7 +34,6 @@ Wi±zania jêzyka Python do GStreamera.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0 -p1
 
 %build
 %{__libtoolize}
