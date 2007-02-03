@@ -2,12 +2,12 @@
 Summary:	GStreamer Python bindings
 Summary(pl):	Wi±zania jêzyka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.6
+Version:	0.10.7
 Release:	1
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	dc9804aa67bc71aa9b6185726b6694ba
+# Source0-md5:	16dd6515fd011ad449e5ce191dbb94be
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
