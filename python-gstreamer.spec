@@ -1,6 +1,6 @@
 %define		pname	gst-python
 Summary:	GStreamer Python bindings
-Summary(pl):	Wi±zania jêzyka Python do GStreamera
+Summary(pl.UTF-8):   WiÄ…zania jÄ™zyka Python do GStreamera
 Name:		python-gstreamer
 Version:	0.10.7
 Release:	1
@@ -29,8 +29,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GStreamer Python bindings.
 
-%description -l pl
-Wi±zania jêzyka Python do GStreamera.
+%description -l pl.UTF-8
+WiÄ…zania jÄ™zyka Python do GStreamera.
 
 %prep
 %setup -q -n %{pname}-%{version}
