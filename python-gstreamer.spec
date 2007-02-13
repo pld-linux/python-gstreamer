@@ -1,6 +1,6 @@
 %define		pname	gst-python
 Summary:	GStreamer Python bindings
-Summary(pl.UTF-8):   Wiązania języka Python do GStreamera
+Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
 Version:	0.10.7
 Release:	1
