@@ -2,18 +2,18 @@
 Summary:	GStreamer Python bindings
 Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.8
+Version:	0.10.9
 Release:	1
-License:	GPL
+License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	c9a7a6324104dc84502fc066c4fc4220
+# Source0-md5:	807e14e8d058445524a34e079bb83048
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.8.0
-BuildRequires:	gstreamer-devel >= 0.10.2
-BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0.2
+BuildRequires:	gstreamer-devel >= 0.10.15
+BuildRequires:	gstreamer-plugins-base-devel >= 0.10.15
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	libtool >= 1.4
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -21,8 +21,8 @@ BuildRequires:	python-pygobject-devel >= 2.11.2
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-libs
 Requires:	glib2 >= 1:2.8.0
-Requires:	gstreamer >= 0.10.2
-Requires:	gstreamer-plugins-base >= 0.10.0.2
+Requires:	gstreamer >= 0.10.15
+Requires:	gstreamer-plugins-base >= 0.10.15
 Requires:	python-pygobject >= 2.11.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
