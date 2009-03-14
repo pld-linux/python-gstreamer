@@ -2,12 +2,12 @@
 Summary:	GStreamer Python bindings
 Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.12
-Release:	2
+Version:	0.10.14
+Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	e5d39eed5062ab1521abc61a6863f7b3
+# Source0-md5:	a2df4bc00c718ab9d1edda4429a58b9d
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -71,6 +71,7 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %py_postclean
 
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/gst-*/gst/*.la
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,7 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS RELEASE TODO
 %dir %{py_sitedir}/gst-*
 %dir %{py_sitedir}/gst-*/gst
+%attr(755,root,root) %{py_sitedir}/gstoption.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/_gst.so
+%attr(755,root,root) %{py_sitedir}/gst-*/gst/audio.so
+%attr(755,root,root) %{py_sitedir}/gst-*/gst/tag.so
+%attr(755,root,root) %{py_sitedir}/gst-*/gst/video.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/interfaces.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/pbutils.so
 %{py_sitedir}/gst-*/gst/__init__.py[co]
