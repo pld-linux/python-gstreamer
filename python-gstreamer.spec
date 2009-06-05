@@ -2,12 +2,12 @@
 Summary:	GStreamer Python bindings
 Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.14
+Version:	0.10.15
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	a2df4bc00c718ab9d1edda4429a58b9d
+# Source0-md5:	3329320a97bdbc669e11054f19bddf5a
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -70,6 +70,7 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %py_postclean
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-*/*.la
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/gst-*/gst/*.la
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.la
 
@@ -79,6 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS RELEASE TODO
+%attr(755,root,root) %{_libdir}/gstreamer-*/libgstpython.so
 %dir %{py_sitedir}/gst-*
 %dir %{py_sitedir}/gst-*/gst
 %attr(755,root,root) %{py_sitedir}/gstoption.so
