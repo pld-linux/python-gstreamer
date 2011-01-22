@@ -2,18 +2,18 @@
 Summary:	GStreamer Python bindings
 Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.20
+Version:	0.10.21
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	d706ea52819305f698d80343a583b03b
+# Source0-md5:	31340ae3e877797a10d088a226d74b16
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	glib2-devel >= 1:2.8.0
-BuildRequires:	gstreamer-devel >= 0.10.30
-BuildRequires:	gstreamer-plugins-base-devel >= 0.10.30
+BuildRequires:	gstreamer-devel >= 0.10.32
+BuildRequires:	gstreamer-plugins-base-devel >= 0.10.32
 BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	libtool >= 1.4
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -22,8 +22,8 @@ BuildRequires:	python-pygobject-devel >= 2.15.0
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 Requires:	glib2 >= 1:2.8.0
-Requires:	gstreamer >= 0.10.30
-Requires:	gstreamer-plugins-base >= 0.10.30
+Requires:	gstreamer >= 0.10.32
+Requires:	gstreamer-plugins-base >= 0.10.32
 Requires:	python-pygobject >= 2.15.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -38,6 +38,8 @@ Summary:	Development files and examples for GStreamer Python bindings
 Summary(pl.UTF-8):	Pliki programistyczne i przykłady dla wiązań Pythona do GStreamera
 Group:		Development/Languages/Python
 Requires:	%{name} = %{version}-%{release}
+Requires:	gstreamer-devel >= 0.10.32
+Requires:	python-pygobject-devel >= 2.15.0
 
 %description devel
 Development files and examples for GStreamer Python bindings.
@@ -72,9 +74,9 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %py_postclean
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-*/*.la
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/gst-*/gst/*.la
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gstreamer-*/*.la
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/gst-*/gst/*.la
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,9 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS RELEASE TODO
 %attr(755,root,root) %{_libdir}/gstreamer-*/libgstpython.so
+%attr(755,root,root) %{py_sitedir}/gstoption.so
 %dir %{py_sitedir}/gst-*
 %dir %{py_sitedir}/gst-*/gst
-%attr(755,root,root) %{py_sitedir}/gstoption.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/_gst.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/audio.so
 %attr(755,root,root) %{py_sitedir}/gst-*/gst/tag.so
