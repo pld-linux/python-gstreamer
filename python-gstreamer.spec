@@ -2,12 +2,12 @@
 Summary:	GStreamer Python bindings
 Summary(pl.UTF-8):	Wiązania języka Python do GStreamera
 Name:		python-gstreamer
-Version:	0.10.21
+Version:	0.10.22
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	31340ae3e877797a10d088a226d74b16
+# Source0-md5:	937152fe896241f827689f4b53e79b22
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
@@ -84,24 +84,28 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS RELEASE TODO
-%attr(755,root,root) %{_libdir}/gstreamer-*/libgstpython.so
+%attr(755,root,root) %{_libdir}/gstreamer-0.10/libgstpython.so
 %attr(755,root,root) %{py_sitedir}/gstoption.so
-%dir %{py_sitedir}/gst-*
-%dir %{py_sitedir}/gst-*/gst
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/_gst.so
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/audio.so
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/tag.so
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/video.so
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/interfaces.so
-%attr(755,root,root) %{py_sitedir}/gst-*/gst/pbutils.so
-%{py_sitedir}/gst-*/gst/__init__.py[co]
-%dir %{py_sitedir}/gst-*/gst/extend
-%{py_sitedir}/gst-*/gst/extend/*.py[co]
+%dir %{py_sitedir}/gst-0.10
+%dir %{py_sitedir}/gst-0.10/gst
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/_gst.so
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/audio.so
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/tag.so
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/video.so
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/interfaces.so
+%attr(755,root,root) %{py_sitedir}/gst-0.10/gst/pbutils.so
+%{py_sitedir}/gst-0.10/gst/__init__.py[co]
+%dir %{py_sitedir}/gst-0.10/gst/extend
+%{py_sitedir}/gst-0.10/gst/extend/*.py[co]
 %{py_sitedir}/pygst.pth
 %{py_sitedir}/pygst.py[co]
 
 %files devel
 %defattr(644,root,root,755)
+%{_includedir}/gstreamer-0.10/gst/pygst.h
+%{_includedir}/gstreamer-0.10/gst/pygstexception.h
+%{_includedir}/gstreamer-0.10/gst/pygstminiobject.h
+%{_includedir}/gstreamer-0.10/gst/pygstvalue.h
 %dir %{_datadir}/gst-python
 %dir %{_datadir}/gst-python/0.10
 %{_datadir}/gst-python/0.10/defs
