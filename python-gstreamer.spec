@@ -7,12 +7,12 @@
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
-Version:	1.2.0
+Version:	1.2.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.bz2
-# Source0-md5:	da9a33cccdb7d094f243e4b469cfbc76
+# Source0-md5:	bfc70a6529a981cb84fc8a7b4da69305
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
@@ -119,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-gstreamer
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS TODO
-%attr(755,root,root) %{py3_sitedir}/gi/overrides/_gi_gst.so
+%attr(755,root,root) %{py3_sitedir}/gi/overrides/_gi_gst.cpython-*.so
 %{py3_sitedir}/gi/overrides/Gst.py
 %{py3_sitedir}/gi/overrides/GstPbutils.py
 %{py3_sitedir}/gi/overrides/__pycache__/Gst.*.py[co]
