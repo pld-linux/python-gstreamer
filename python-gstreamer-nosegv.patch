@@ -1,0 +1,33 @@
+--- gst-python-1.6.0/plugin/gstpythonplugin.c.orig	2014-10-20 11:18:17.000000000 +0200
++++ gst-python-1.6.0/plugin/gstpythonplugin.c	2015-10-08 20:48:36.028154982 +0200
+@@ -262,18 +262,26 @@
+   }
+ 
+   gst = PyImport_ImportModule ("gi.repository.Gst");
++  if (gst == NULL) {
++    GST_ERROR ("Gst import failed");
++    return FALSE;
++  }
+   if (we_initialized) {
+-    PyObject *tmp;
++    PyObject *tmp, *itmp;
+ 
+     dict = PyModule_GetDict (gst);
+     if (!dict) {
+       GST_ERROR ("no dict?!");
++      return FALSE;
+     }
+ 
+-
++    itmp = PyMapping_GetItemString (dict, "_introspection_module");
++    if (!itmp) {
++      GST_ERROR ("no _introspection_module?");
++      return FALSE;
++    }
+     tmp =
+-        PyObject_GetAttr (PyMapping_GetItemString (dict,
+-            "_introspection_module"), PyUnicode_FromString ("__dict__"));
++        PyObject_GetAttr (itmp, PyUnicode_FromString ("__dict__"));
+ 
+     _PyGstElement_Type = PyMapping_GetItemString (tmp, "Element");
+ 

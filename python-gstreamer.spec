@@ -1,28 +1,20 @@
 #
 # Conditional build:
-%bcond_without	python2		# CPython 2.x module
-%bcond_without	python3		# CPython 3.x module
-%bcond_with	pluginpy3	# use Python 3 instead of 2 for plugin
+%bcond_without	python2		# CPython 2.x module and plugin
+%bcond_without	python3		# CPython 3.x module and plugin
 
-%define		gst_ver	1.4.0
+%define		gst_ver	1.6.0
 %define		pname	gst-python
-%if %{without python2}
-%define		with_pluginpy3	1
-%endif
-%if %{with pluginpy3}
-%define		pluginpython	python3
-%else
-%define		pluginpython	python
-%endif
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
-Version:	1.4.0
-Release:	4
+Version:	1.6.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	http://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	72e3ba811db671366162bbf75a01ed37
+# Source0-md5:	498792e9e1b61a90de1e28cf04e88a9e
+Patch0:		%{name}-nosegv.patch
 URL:		http://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
@@ -52,6 +44,18 @@ GStreamer Python 2 bindings.
 %description -l pl.UTF-8
 Wiązania języka Python 2 do GStreamera.
 
+%package -n gstreamer-python
+Summary:	GStreamer plugin to load plugins written in Python 2
+Summary(pl.UTF-8):	Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 2
+Group:		Libraries
+Requires:	python-gstreamer = %{version}-%{release}
+
+%description -n gstreamer-python
+GStreamer plugin to load plugins written in Python 2.
+
+%description -n gstreamer-python -l pl.UTF-8
+Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 2.
+
 %package -n python3-gstreamer
 Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
@@ -65,20 +69,21 @@ GStreamer Python 3 bindings.
 %description -n python3-gstreamer -l pl.UTF-8
 Wiązania języka Python 3 do GStreamera.
 
-%package -n gstreamer-%{pluginpython}
-Summary:	GStreamer plugin to load plugins written in Python
-Summary(pl.UTF-8):	Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie
+%package -n gstreamer-python3
+Summary:	GStreamer plugin to load plugins written in Python 3
+Summary(pl.UTF-8):	Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3
 Group:		Libraries
-Requires:	%{pluginpython}-gstreamer = %{version}-%{release}
+Requires:	python3-gstreamer = %{version}-%{release}
 
-%description -n gstreamer-%{pluginpython}
-GStreamer plugin to load plugins written in Python.
+%description -n gstreamer-python3
+GStreamer plugin to load plugins written in Python 3.
 
-%description -n gstreamer-%{pluginpython} -l pl.UTF-8
-Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie.
+%description -n gstreamer-python3 -l pl.UTF-8
+Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 
 %prep
 %setup -q -n %{pname}-%{version}
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -125,12 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/gi/overrides/*.la
-
-%if %{without pluginpy3}
-# if both modules are installed and py2 plugin is selected, reinstall py2 version of plugin
-%{__make} -C python2/plugin install \
-	DESTDIR=$RPM_BUILD_ROOT
-%endif
 %endif
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/libgstpythonplugin.la
@@ -146,6 +145,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/gi/overrides/_gi_gst.so
 %{py_sitedir}/gi/overrides/Gst.py[co]
 %{py_sitedir}/gi/overrides/GstPbutils.py[co]
+
+%files -n gstreamer-python
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpythonplugin.so
+%dir %{_libdir}/gstreamer-1.0/python
 %endif
 
 %if %{with python3}
@@ -157,9 +161,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitedir}/gi/overrides/GstPbutils.py
 %{py3_sitedir}/gi/overrides/__pycache__/Gst.*.py[co]
 %{py3_sitedir}/gi/overrides/__pycache__/GstPbutils.*.py[co]
-%endif
 
-%files -n gstreamer-%{pluginpython}
+%files -n gstreamer-python3
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpythonplugin.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpythonplugin.cpython-3*.so
 %dir %{_libdir}/gstreamer-1.0/python
+%endif
