@@ -8,12 +8,12 @@
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
-Version:	1.12.2
+Version:	1.12.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	da5c9fa42290bc3006661c869e076ffe
+# Source0-md5:	f1fd046ea781736a794f9f552d77c50d
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.68
