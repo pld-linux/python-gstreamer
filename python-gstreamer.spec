@@ -3,17 +3,17 @@
 %bcond_without	python2		# CPython 2.x module and plugin
 %bcond_without	python3		# CPython 3.x module and plugin
 
-%define		gst_ver	1.12.0
+%define		gst_ver	1.14.0
 %define		pname	gst-python
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
-Version:	1.12.4
-Release:	3
+Version:	1.14.4
+Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	f1fd046ea781736a794f9f552d77c50d
+# Source0-md5:	d4c0e3915f547feef49208ee08981e5a
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.68
@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/gi/overrides/*.la
 %endif
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/libgstpythonplugin.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/libgstpython.la
 install -d $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/python
 
 %clean
@@ -148,7 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n gstreamer-python
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpythonplugin.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpython.so
 %dir %{_libdir}/gstreamer-1.0/python
 %endif
 
@@ -164,6 +164,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n gstreamer-python3
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpythonplugin.cpython-3*.so
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstpython.cpython-3*.so
 %dir %{_libdir}/gstreamer-1.0/python
 %endif
