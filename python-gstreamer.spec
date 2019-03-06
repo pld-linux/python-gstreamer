@@ -3,7 +3,7 @@
 %bcond_without	python2		# CPython 2.x module and plugin
 %bcond_without	python3		# CPython 3.x module and plugin
 
-%define		gst_ver	1.14.0
+%define		gst_ver	1.14.4
 %define		pname	gst-python
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
@@ -23,18 +23,18 @@ BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	pkgconfig >= 1:0.9.0
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
-BuildRequires:	python-pygobject3-devel >= 3.0
+BuildRequires:	python-pygobject3-devel >= 3.8
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.3
-BuildRequires:	python3-pygobject3-devel >= 3.0
+BuildRequires:	python3-pygobject3-devel >= 3.8
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.612
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	gstreamer >= %{gst_ver}
-Requires:	python-pygobject3 >= 3.0
+Requires:	python-pygobject3 >= 3.8
 Obsoletes:	python-gstreamer-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,7 +61,7 @@ Summary:	GStreamer Python 3 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 3 do GStreamera
 Group:		Libraries/Python
 Requires:	gstreamer >= %{gst_ver}
-Requires:	python3-pygobject3 >= 3.0
+Requires:	python3-pygobject3 >= 3.8
 
 %description -n python3-gstreamer
 GStreamer Python 3 bindings.
