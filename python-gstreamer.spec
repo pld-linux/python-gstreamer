@@ -3,17 +3,17 @@
 %bcond_without	python2		# CPython 2.x module and plugin
 %bcond_without	python3		# CPython 3.x module and plugin
 
-%define		gst_ver	1.14.4
+%define		gst_ver	1.16.0
 %define		pname	gst-python
 Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
-Version:	1.14.4
+Version:	1.16.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
-# Source0-md5:	d4c0e3915f547feef49208ee08981e5a
+# Source0-md5:	877b2ed2aaffdb62e63f38ea9469b70f
 Patch0:		%{name}-nosegv.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.68
