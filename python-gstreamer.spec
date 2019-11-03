@@ -9,12 +9,13 @@ Summary:	GStreamer Python 2 bindings
 Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
 Version:	1.16.0
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
 # Source0-md5:	877b2ed2aaffdb62e63f38ea9469b70f
 Patch0:		%{name}-nosegv.patch
+Patch1:		python-3.8.patch
 URL:		https://gstreamer.freedesktop.org/modules/gst-python.html
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
@@ -84,6 +85,7 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 %prep
 %setup -q -n %{pname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
