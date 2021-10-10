@@ -36,7 +36,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	gstreamer >= %{gst_ver}
 Requires:	python-pygobject3 >= 3.8
-Obsoletes:	python-gstreamer-devel
+Obsoletes:	python-gstreamer-devel < 1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
