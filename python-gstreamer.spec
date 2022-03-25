@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
 # keep 1.16.x here (1.18+ is python3-only, see python3-gstreamer.spec)
 Version:	1.16.3
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
