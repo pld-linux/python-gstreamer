@@ -84,7 +84,7 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__libtoolize}
