@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	python2		# CPython 2.x module and plugin
-%bcond_without	python3		# CPython 3.x module and plugin
+%bcond_with	python3		# CPython 3.x module and plugin
 
 %define		gst_ver	1.16.3
 %define		pname	gst-python
@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Wiązania języka Python 2 do GStreamera
 Name:		python-gstreamer
 # keep 1.16.x here (1.18+ is python3-only, see python3-gstreamer.spec)
 Version:	1.16.3
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		Libraries/Python
 Source0:	https://gstreamer.freedesktop.org/src/gst-python/%{pname}-%{version}.tar.xz
@@ -87,16 +87,11 @@ Wtyczka GStreamera do wczytywania wtyczek napisanych w Pythonie 3.
 %patch -P0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I common/m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-
+%define configuredir ..
 %if %{with python2}
 install -d python2
 cd python2
-../%configure \
+%configure \
 	PYTHON="%{__python}" \
 	--disable-silent-rules
 %{__make}
@@ -106,7 +101,7 @@ cd ..
 %if %{with python3}
 install -d python3
 cd python3
-../%configure \
+%configure \
 	PYTHON="%{__python3}" \
 	--disable-silent-rules
 %{__make}
